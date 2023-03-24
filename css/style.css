@@ -9,4 +9,47 @@ body {
 
 .cards {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  height: 80vh;
+  gap: 1rem;
+}
+
+.card {
+  width: 20%;
+  height: 20%;
+  perspective: 600px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgb(83, 83, 83), gray);
+  display: grid;
+  place-content: center;
+  font-size: 2.5rem;
+  border-radius: 0.75rem;
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.back {
+  background: linear-gradient(steelblue, lightsteelblue);
+  transform: rotateY(180deg);
+}
+
+.card.flipped .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
 }

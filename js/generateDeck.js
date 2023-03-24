@@ -1,33 +1,25 @@
+import { selectCards } from "./flipCards.js";
 const ul = document.querySelector(".cards");
 const generateDeck = () => {
-  const deck = [
-    "🤯",
-    "💣",
-    "❤️",
-    "👩",
-    "🫑",
-    "🥔",
-    "🏠",
-    "👻",
-    "🤯",
-    "💣",
-    "❤️",
-    "👩",
-    "🫑",
-    "🥔",
-    "🏠",
-    "👻",
-  ];
+  const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+  const deck = [...emojis, ...emojis];
 
   for (let i = 0; deck.length > 0; i++) {
     const cardIndex = Math.floor(Math.random() * deck.length);
     const card = deck[cardIndex];
     const li = document.createElement("li");
-    li.textContent = card;
+    li.innerHTML = ` <div class="content">
+    <div class="front">
+      
+    </div>
+    <div class="back">
+      ${card}
+    </div>
+  </div>`;
     li.classList.add("card");
     ul.append(li);
     deck.splice(cardIndex, 1);
-    console.log(card);
   }
+  selectCards();
 };
 export { generateDeck, ul };

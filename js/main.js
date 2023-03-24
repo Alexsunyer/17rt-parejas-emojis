@@ -1,9 +1,11 @@
-import { generateDeck, ul as cards } from "./generateDeck.js";
-generateDeck();
+import { generateDeck, ul } from "./generateDeck.js";
+
+let count = 0;
 const dealBtn = document.querySelector("#deal");
 dealBtn.addEventListener("click", (e) => {
   console.dir(e);
-  cards.innerHTML = "";
-
+  ul.innerHTML = "";
   generateDeck();
 });
+
+generateDeck();
