@@ -4,7 +4,7 @@ const generateDeck = () => {
   const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
   const deck = [...emojis, ...emojis];
 
-  for (let i = 0; deck.length > 0; i++) {
+  while (deck.length > 0) {
     const cardIndex = Math.floor(Math.random() * deck.length);
     const card = deck[cardIndex];
     const li = document.createElement("li");
