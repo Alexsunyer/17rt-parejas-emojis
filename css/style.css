@@ -5,14 +5,31 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto, arial, sans-serif;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+body > header {
+  grid-area: header;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
 }
 
+/* cartas*/
 .cards {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  max-width: 80vw;
-  height: 80vh;
+  width: 100vw;
+  height: 200px;
   gap: 1rem;
 }
 
@@ -57,12 +74,13 @@ body {
 #links {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   list-style: none;
-  gap: 10rem;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 1.5em;
+  /* gap: 1rem; */
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+
   background-color: azure;
-  height: 7rem;
+  /* height: 7rem; */
   box-shadow: 10px 2px 4px black;
 }
 
