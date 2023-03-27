@@ -31,7 +31,6 @@ const selectFlippedCards = () => {
       for (const card of selectedList) {
         card.classList.remove("selected");
         card.classList.add("solved");
-        card.classList.add("solved");
         card.removeEventListener("click", flip);
       }
     } else {
