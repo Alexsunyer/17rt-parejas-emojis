@@ -4,7 +4,7 @@ const flip = (e) => {
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
   if (stopBug.length < 2) {
     currentCard.classList.add("flipped", "selected");
-    console.log(currentCard.textContent);
+    // console.log(currentCard.textContent);
     selectFlippedCards();
   }
 };
@@ -17,29 +17,31 @@ const selectCards = () => {
   }
 };
 
-// La funcion selectFlippedCards sirve para hacer que las cartas correctas ya no puedan ser seleccionadas
 let attepmts = 0;
 const selectFlippedCards = () => {
   const selectedList = document.querySelectorAll(".selected");
   if (selectedList.length === 2) {
     attepmts++;
-    let card1 = selectedList[0];
-    let card2 = selectedList[1];
+    const cards = document.querySelectorAll(".selected.flipped .back");
+    const card1 = cards[0];
+    const card2 = cards[1];
+
     console.log(card1, card2);
     if (card1.textContent === card2.textContent) {
-      card1.classList.remove("selected");
-      card2.classList.remove("selected");
-      card1.classList.add("solved");
-      card2.classList.add("solved");
-      card1.removeEventListener("click", flip);
-      card2.removeEventListener("click", flip);
+      for (const card of selectedList) {
+        card.classList.remove("selected");
+        card.classList.add("solved");
+        card.classList.add("solved");
+        card.removeEventListener("click", flip);
+      }
     } else {
-      console.log("no son iguales");
-      card1.classList.remove("selected");
-      card2.classList.remove("selected");
+      for (const card of selectedList) {
+        card.classList.remove("selected");
+      }
       setTimeout(() => {
-        card1.classList.remove("flipped");
-        card2.classList.remove("flipped");
+        for (const card of selectedList) {
+          card.classList.remove("flipped");
+        }
       }, 1000);
     }
   }
