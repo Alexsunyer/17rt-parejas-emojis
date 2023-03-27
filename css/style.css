@@ -5,20 +5,63 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto, arial, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+body > header {
+  grid-area: header;
+  text-align: center;
+  background-color: rgb(140, 110, 179);
+  color: white;
+}
+main {
+  grid-area: main;
+  background: url(/img/tablero-de-ajedrez-minimalista_1920x1080_xtrafondos.com.jpg)
+    center center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+footer {
+  grid-area: footer;
+}
+h1 {
+  display: inline-block;
+  color: rgba(255, 255, 255);
+  font-size: 1.5rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: rgba(137, 43, 226, 0.404);
+  margin: 0.5rem auto;
+  box-shadow: 0 0 10px black;
 }
 
 .cards {
+  background-color: white;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 80vw;
-  height: 80vh;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
   gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .card {
-  width: 20%;
-  height: 20%;
+  height: 100%;
+  width: 65%;
   perspective: 600px;
 }
 
@@ -70,3 +113,32 @@ body {
   color: black;
   text-decoration: none;
 }
+
+/* @media (min-width: 768px) {
+  .cards {
+    list-style: none;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+    width: 768px;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+  .cards {
+    background-color: white;
+    list-style: none;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+} */
