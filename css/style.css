@@ -53,3 +53,20 @@ body {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
+
+#links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 10rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.5em;
+  background-color: azure;
+  height: 7rem;
+  box-shadow: 10px 2px 4px black;
+}
+
+#links a {
+  color: black;
+  text-decoration: none;
+}
