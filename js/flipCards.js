@@ -1,4 +1,5 @@
 // La funcion flip se encarga de dar la vuelta
+
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");

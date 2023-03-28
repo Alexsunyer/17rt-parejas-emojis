@@ -26,6 +26,7 @@ main {
   background: url(/img/tablero-de-ajedrez-minimalista_1920x1080_xtrafondos.com.jpg)
     center center/cover no-repeat;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -80,7 +81,7 @@ h1 {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: linear-gradient(rgb(179, 26, 26), rgb(255, 1, 1));
+
   display: grid;
   place-content: center;
   font-size: 2.5rem;
@@ -89,6 +90,19 @@ h1 {
   user-select: none;
 }
 
+.front {
+  background-color: #100b4d;
+  border: 0.5rem solid lightgrey;
+}
+.frontIcon {
+  line-height: 2.5rem;
+  background-color: #a8df6a;
+  padding: 1rem;
+  border-radius: 50%;
+  text-shadow: 0 0 2rem #4e5219;
+  box-shadow: 0 0 2rem #e7f14d;
+  transform: rotate(45deg);
+}
 .back {
   background: linear-gradient(steelblue, lightsteelblue);
   transform: rotateY(180deg);
@@ -98,8 +112,15 @@ h1 {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
-
+#asd {
+  display: flex;
+  width: 100%;
+  padding: 0 5rem;
+  justify-content: space-between;
+  align-items: center;
+}
 #deal {
+  padding: 1rem 4rem;
 }
 #links {
   display: flex;
