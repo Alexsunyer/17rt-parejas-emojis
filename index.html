@@ -10,33 +10,23 @@
   <body>
     <header>
       <h1>Parejas</h1>
+      <button id="deal">Jugar!</button>
       <nav>
         <ul id="links">
           <li><a href="#about"> About</a></li>
           <li><a href="#description"> Reglas</a></li>
-          <li><a href="#scores">Scores</a></li>
+          <li><p class="score">Scores</p></li>
         </ul>
       </nav>
     </header>
     <main>
-      <div id="asd">
-        <section class="scores">
-          <header>
-            <h3>Intentos:</h3>
-            <p class="score"></p>
-          </header>
-        </section>
-        <button id="deal">Jugar!</button>
-        <section class="scores">
-          <header>
-            <h3>Mejor marca:</h3>
-            <p class="highScore"></p>
-          </header>
-        </section>
+      <div id="win" class="behind">
+        <p id="winP" class="winMessage"></p>
+        <button id="restart">Volver a jugar</button>
       </div>
       <ul class="cards"></ul>
     </main>
-    <footer><p>Hecho por: Eduardo, Cayetano, Alex y Guillem</p></footer>
+    <footer><p>Hecho por: Eduardo, Cayetano y Alex</p></footer>
   </body>
   <script type="module" src="/js/main.js"></script>
 </html>
