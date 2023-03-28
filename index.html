@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <header><h1>Juego de parejas de emojis</h1></header>
+    <header>
+      <h1>Parejas</h1>
+      <button id="deal">Jugar!</button>
+      <nav>
+        <ul id="links">
+          <li><a href="#about"> About</a></li>
+          <li><a href="#description"> Reglas</a></li>
+          <li><p class="score">Scores</p></li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <button id="deal">Repartir cartas</button>
-      <section class="scores">
-        <header>
-          Intentos realizados:
-          <p class="score"></p>
-        </header>
-      </section>
+      <div id="win" class="behind">
+        <p id="winP" class="winMessage"></p>
+        <button id="restart">Volver a jugar</button>
+      </div>
       <ul class="cards"></ul>
     </main>
-    <footer><p>Hecho por: Eduardo, Cayetano, Alex y Guillem</p></footer>
-    <script type="module" src="/js/main.js"></script>
+    <footer><p>Hecho por: Eduardo, Cayetano y Alex</p></footer>
   </body>
+  <script type="module" src="/js/main.js"></script>
 </html>
