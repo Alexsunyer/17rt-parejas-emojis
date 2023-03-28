@@ -34,7 +34,10 @@ main {
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+
   gap: 1rem;
+
+
 }
 footer {
   grid-area: footer;
@@ -50,25 +53,60 @@ h3 {
   font-size: 0.8rem;
 }
 
+/* cuadro win */
+
+.behind {
+  visibility: hidden;
+  position: fixed;
+}
+
+.infront {
+  z-index: 1;
+  position: fixed;
+  visibility: visible;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a8df6a;
+  top: 30vh;
+  left: 20vw;
+  height: 40vh;
+  width: 60vw;
+  background-color: #100b4d;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 5%;
+  border: 5px solid #a8df6a;
+  box-shadow: 0px 0px 15px black;
+}
+#restart {
+  border: #a8df6a 3px solid;
+  border-radius: 5%;
+  box-shadow: 0px 0px 15px black;
+  background-color: white;
+  font-family: Roboto, sans-serif;
+}
+
 /* cartas*/
 .cards {
-  background-color: white;
   list-style: none;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: grid;
   grid-template-columns: 20% 20% 20% 20%;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  justify-content: center;
+  justify-content: space-evenly;
   justify-items: center;
-  width: 100%;
-  gap: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  width: 370px;
+  height: 550px;
+  /* gap: 1rem; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .card {
-  height: 100%;
-  width: 65%;
+  height: 120px;
+  width: 80px;
   perspective: 600px;
 }
 
@@ -101,10 +139,11 @@ h3 {
 .frontIcon {
   line-height: 2.5rem;
   background-color: #a8df6a;
-  padding: 1rem;
+  padding: 0.6rem;
   border-radius: 50%;
   text-shadow: 0 0 2rem #4e5219;
   box-shadow: 0 0 2rem #e7f14d;
+  font-size: 1.5rem;
   transform: rotate(45deg);
 }
 .back {
@@ -127,6 +166,8 @@ h3 {
   border: solid 2px rgba(0, 0, 0, 0.555);
   border-radius: 10px;
 }
+
+
 #deal {
   border-style: none;
   border-radius: 10px;
