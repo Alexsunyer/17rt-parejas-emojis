@@ -46,6 +46,8 @@ h1 {
 
   border-radius: 0.5rem;
   text-shadow: 0 0 20px #000000e0;
+  display: inline-block;
+  animation: Titulo 2s linear infinite backwards;
 }
 h3 {
   font-size: 0.8rem;
@@ -115,6 +117,7 @@ h3 {
   height: 120px;
   width: 80px;
   perspective: 600px;
+  animation: dealCartas 1s;
 }
 
 .content {
@@ -202,10 +205,44 @@ h3 {
   60% {
     transform: translateX(-8rem);
   }
+
   80% {
     transform: translateX(8rem);
   }
   100% {
     top: 100vh;
+}
+} 
+
+@keyframes dealCartas {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes Titulo {
+  20% {
+    transform: rotate(10deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+
   }
 }
