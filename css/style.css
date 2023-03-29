@@ -18,32 +18,37 @@ body {
 body > header {
   grid-area: header;
   text-align: center;
-  background-color: rgb(140, 110, 179);
+  background-color: rgb(114, 114, 114);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* padding: 0.5rem 0; */
 }
 main {
   grid-area: main;
+
   background: url(/img/tablero-de-ajedrez-minimalista_1920x1080_xtrafondos.com.jpg)
     center center/cover no-repeat;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  /* gap: 1rem; */
-  padding-top: 1rem;
+
+  gap: 1rem;
 }
 footer {
   grid-area: footer;
 }
 h1 {
-  display: inline-block;
-  color: rgba(255, 255, 255);
+  color: rgb(96, 223, 71);
   font-size: 1.5rem;
-  padding: 0.2rem 0.8rem;
+
   border-radius: 0.5rem;
-  background-color: rgba(137, 43, 226, 0.404);
-  margin: 0.5rem auto;
-  box-shadow: 0 0 10px black;
+  text-shadow: 0 0 20px #000000e0;
+}
+h3 {
+  font-size: 0.8rem;
 }
 
 /* cuadro win */
@@ -81,6 +86,15 @@ h1 {
   font-family: Roboto, sans-serif;
 }
 
+/* Lluvia */
+
+.lluvia li {
+  position: fixed;
+  list-style: none;
+  font-size: 3rem;
+  animation: lluvia 5s forwards linear;
+}
+
 /* cartas*/
 .cards {
   list-style: none;
@@ -93,8 +107,8 @@ h1 {
   width: 370px;
   height: 550px;
   /* gap: 1rem; */
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .card {
@@ -149,57 +163,49 @@ h1 {
   transition: transform 0.5s;
 }
 
-#deal {
-  padding: 1rem 4rem;
-}
-#links {
+#headerBox {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  list-style: none;
-  background-color: rgba(50, 50, 200, 50%);
-  box-shadow: 10px 2px 4px black;
-  border: 1px solid rgba(50, 50, 200, 100%);
-  padding: 0.2rem;
-}
-
-#links a {
-  background-color: rgba(137, 43, 226, 0.404);
-  margin: 1rem auto;
-  border-radius: 0.2rem;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  padding: 0.5rem 1.5rem;
+  background-color: rgba(41, 41, 41, 0.596);
   box-shadow: 0 0 10px black;
-  padding: 0 1rem;
-  color: rgba(255, 255, 255, 0.644);
-  text-decoration: none;
-  font-size: 0.8em;
+  border: solid 2px rgba(0, 0, 0, 0.555);
+  border-radius: 10px;
 }
 
-/* @media (min-width: 768px) {
-  .cards {
-    list-style: none;
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    justify-items: center;
-    width: 768px;
-    gap: 1rem;
-    padding-bottom: 2rem;
+#deal {
+  border-style: none;
+  border-radius: 10px;
+  background-color: #a8df6a;
+  font-weight: 900;
+  font-size: 1.5;
+  color: white;
+  text-shadow: 0 0 30px #000000;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px #a8df6ada;
+}
+#deal:hover {
+  background-color: #85e21b;
+}
+
+@keyframes lluvia {
+  0% {
+    top: 0;
   }
-  .cards {
-    background-color: white;
-    list-style: none;
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    justify-items: center;
-    width: 100%;
-    gap: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  20% {
+    transform: translateX(-8rem);
   }
-} */
+  40% {
+    transform: translateX(8rem);
+  }
+  60% {
+    transform: translateX(-8rem);
+  }
+  80% {
+    transform: translateX(8rem);
+  }
+  100% {
+    top: 100vh;
+  }
+}
