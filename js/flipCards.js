@@ -91,7 +91,7 @@ const selectFlippedCards = () => {
     }
 
     winButton.addEventListener("click", () => {
-      // ul.innerHTML = "";
+      ul.innerHTML = "";
       ulLluvia.innerHTML = "";
       winDiv.classList.remove("infront");
       winDiv.classList.add("behind");
