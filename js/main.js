@@ -1,3 +1,4 @@
+"use strict";
 import { generateDeck, ul } from "./generateDeck.js";
 
 const dealBtn = document.querySelector("#deal");

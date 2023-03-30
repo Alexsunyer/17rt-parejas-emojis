@@ -1,4 +1,6 @@
+"use strict";
 // La funcion flip se encarga de dar la vuelta
+
 
 import { generateDeck, ul } from "./generateDeck.js";
 
@@ -15,6 +17,7 @@ const ErrorSound = () => {
 //nuevo
 
 const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+
 
 const flip = (e) => {
   const currentCard = e.currentTarget;

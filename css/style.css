@@ -23,7 +23,7 @@ body > header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* padding: 0.5rem 0; */
+  padding: 0.5rem;
 }
 main {
   grid-area: main;
@@ -31,9 +31,11 @@ main {
   background: url(/img/tablero-de-ajedrez-minimalista_1920x1080_xtrafondos.com.jpg)
     center center/cover no-repeat;
   display: flex;
-  flex-wrap: wrap;
+  height: 100%;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   gap: 1rem;
 }
@@ -100,22 +102,19 @@ h3 {
 /* cartas*/
 .cards {
   list-style: none;
-  /* flex-grow: 1; */
+  row-gap: 1rem;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  justify-content: space-evenly;
+
   justify-items: center;
-  width: 370px;
-  height: 550px;
-  /* gap: 1rem; */
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
+  height: 90%;
 }
 
 .card {
-  height: 120px;
-  width: 80px;
+  height: 100%px;
+  width: 80%;
   perspective: 600px;
   animation: dealCartas 1s;
 }
@@ -151,7 +150,7 @@ h3 {
   background-color: #a8df6a;
   padding: 0.6rem;
   border-radius: 50%;
-  text-shadow: 0 0 2rem #4e5219;
+  text-shadow: 0 0 2rem #ffffff;
   box-shadow: 0 0 2rem #e7f14d;
   font-size: 1.5rem;
   transform: rotate(45deg);
@@ -170,7 +169,7 @@ h3 {
   display: flex;
   flex-direction: column;
   row-gap: 0.3rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: rgba(41, 41, 41, 0.596);
   box-shadow: 0 0 10px black;
   border: solid 2px rgba(0, 0, 0, 0.555);
@@ -211,8 +210,8 @@ h3 {
   }
   100% {
     top: 100vh;
+  }
 }
-} 
 
 @keyframes dealCartas {
   0% {
@@ -242,6 +241,31 @@ h3 {
   }
 
   100% {
+
     transform: scale(1) rotate(-5deg);
+
   }
 }
+@media only screen and (max-width: 900px) and (min-width: 600px) {
+  body {
+    grid-template-rows: 100vh 1.2rem;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "header main"
+      "footer footer";
+  }
+  body > header {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* @media (min-hei: 800px) {
+  body {
+    grid-template-rows: 1fr 1.2rem;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "header main"
+      "footer footer";
+  }
+} */
