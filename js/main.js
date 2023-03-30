@@ -9,5 +9,3 @@ dealBtn.addEventListener("click", (e) => {
   generateDeck();
   selectCards();
 });
-
-generateDeck();
