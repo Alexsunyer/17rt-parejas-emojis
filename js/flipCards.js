@@ -4,6 +4,7 @@
 
 import { generateDeck, ul } from "./generateDeck.js";
 
+
 //nuevo
 const flipSound = () => {
   let audio = new Audio("/audio/card3.mp3");
@@ -17,6 +18,7 @@ const ErrorSound = () => {
 //nuevo
 
 const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+
 
 
 const flip = (e) => {
@@ -92,9 +94,9 @@ const selectFlippedCards = () => {
         const li = document.createElement("li");
 
         li.textContent = `${styleEmoji}`;
-        li.style.left = ` ${Math.floor(
-          Math.random() * document.body.offsetWidth
-        )}px `;
+        li.style.left = ` ${
+          Math.floor(Math.random() * (document.body.offsetWidth * 1.1)) - 20
+        }px `;
         ulLluvia.append(li);
       }
     }, 200);
