@@ -148,9 +148,10 @@ h3 {
 .frontIcon {
   line-height: 2.5rem;
   background-color: #a8df6a;
+
   padding: 0.6rem;
   border-radius: 50%;
-  text-shadow: 0 0 2rem #ffffff;
+  text-shadow: 0 0 01rem #ffffff;
   box-shadow: 0 0 2rem #e7f14d;
   font-size: 1.5rem;
   transform: rotate(45deg);
@@ -259,13 +260,3 @@ h3 {
     flex-direction: column;
   }
 }
-
-/* @media (min-hei: 800px) {
-  body {
-    grid-template-rows: 1fr 1.2rem;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "header main"
-      "footer footer";
-  }
-} */

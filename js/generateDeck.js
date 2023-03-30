@@ -1,5 +1,5 @@
 "use strict";
-import { selectCards } from "./flipCards.js";
+
 const ul = document.querySelector(".cards");
 const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
 // Esta función nos imprime por pantalla las 16 cartas
@@ -15,6 +15,5 @@ const generateDeck = () => {
     ul.append(li);
     deck.splice(cardIndex, 1);
   }
-  selectCards();
 };
 export { generateDeck, ul, emojis };
