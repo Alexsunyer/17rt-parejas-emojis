@@ -1,33 +1,41 @@
 "use strict";
 // La funcion flip se encarga de dar la vuelta
 
-
 import { generateDeck, ul } from "./generateDeck.js";
-
+const muted = document.querySelector("#muted");
 
 //nuevo
 const flipSound = () => {
   let audio = new Audio("/audio/card3.mp3");
-  audio.play();
+  if (!muted.checked) {
+    audio.play();
+  }
 };
 
 const ErrorSound = () => {
   let audio = new Audio("/audio/error1.mp3");
-  audio.play();
+  if (!muted.checked) {
+    audio.play();
+  }
 };
 //nuevo
 
 const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
 
-
-
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
   if (stopBug.length < 2) {
+    if (currentCard.classList.value !== "card") {
+      ErrorSound();
+    } else {
+      flipSound();
+    }
     currentCard.classList.add("flipped", "selected");
-    // console.log(currentCard.textContent);
+
     selectFlippedCards();
+  } else {
+    ErrorSound();
   }
 };
 
@@ -36,7 +44,6 @@ const selectCards = () => {
   const cards = document.querySelectorAll(".card");
   for (const card of cards) {
     card.addEventListener("click", flip);
-    card.addEventListener("click", flipSound); //nuevo
   }
 };
 
@@ -56,7 +63,6 @@ const selectFlippedCards = () => {
         card.classList.remove("selected");
         card.classList.add("solved");
         card.removeEventListener("click", flip);
-        card.removeEventListener("click", flipSound); //nuevo
         card.addEventListener("click", ErrorSound); //nuevo
       }
     } else {
@@ -65,6 +71,7 @@ const selectFlippedCards = () => {
       }
       setTimeout(() => {
         for (const card of selectedList) {
+          flipSound();
           card.classList.remove("flipped");
         }
       }, 1000);
@@ -82,7 +89,6 @@ const selectFlippedCards = () => {
   }
 
   const allSolved = document.querySelectorAll(".solved");
-  console.log(allSolved.length);
   if (allSolved.length === 16) {
     const ulLluvia = document.createElement("ul");
     ulLluvia.classList.add("lluvia");
