@@ -3,6 +3,17 @@
 
 import { generateDeck, ul } from "./generateDeck.js";
 const muted = document.querySelector("#muted");
+const mutedIcon = document.querySelector("#mutedIcon");
+const mute = () => {
+  console.dir(mutedIcon);
+  if (muted.checked) {
+    mutedIcon.textContent = "🔊";
+  } else {
+    mutedIcon.textContent = "🔇";
+  }
+};
+
+muted.addEventListener("click", mute);
 
 //nuevo
 const flipSound = () => {
