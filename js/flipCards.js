@@ -1,7 +1,7 @@
 // La funcion flip se encarga de dar la vuelta
 
 import { generateDeck, ul } from "./generateDeck.js";
-const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+const emojis = ["🤯", "💣", "❤️", "👩", "🎶", "🥔", "🏠", "👻"];
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
@@ -62,9 +62,9 @@ const selectFlippedCards = () => {
         const li = document.createElement("li");
 
         li.textContent = `${styleEmoji}`;
-        li.style.left = ` ${Math.floor(
-          Math.random() * document.body.offsetWidth
-        )}px `;
+        li.style.left = ` ${
+          Math.floor(Math.random() * (document.body.offsetWidth * 1.1)) - 20
+        }px `;
         ulLluvia.append(li);
       }
     }, 200);
