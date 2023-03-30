@@ -1,7 +1,23 @@
 "use strict";
 // La funcion flip se encarga de dar la vuelta
 
-import { generateDeck, ul, emojis } from "./generateDeck.js";
+
+import { generateDeck, ul } from "./generateDeck.js";
+
+//nuevo
+const flipSound = () => {
+  let audio = new Audio("/audio/card3.mp3");
+  audio.play();
+};
+
+const ErrorSound = () => {
+  let audio = new Audio("/audio/error1.mp3");
+  audio.play();
+};
+//nuevo
+
+const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+
 
 const flip = (e) => {
   const currentCard = e.currentTarget;
@@ -18,6 +34,7 @@ const selectCards = () => {
   const cards = document.querySelectorAll(".card");
   for (const card of cards) {
     card.addEventListener("click", flip);
+    card.addEventListener("click", flipSound); //nuevo
   }
 };
 
@@ -36,6 +53,8 @@ const selectFlippedCards = () => {
         card.classList.remove("selected");
         card.classList.add("solved");
         card.removeEventListener("click", flip);
+        card.removeEventListener("click", flipSound); //nuevo
+        card.addEventListener("click", ErrorSound); //nuevo
       }
     } else {
       for (const card of selectedList) {
