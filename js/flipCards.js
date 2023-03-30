@@ -2,6 +2,10 @@
 // La funcion flip se encarga de dar la vuelta
 
 import { generateDeck, ul } from "./generateDeck.js";
+import { startCounting, chrono, resetTimer, mins, secs } from "./timer.js";
+let attempts = 0;
+const sessionScores = [];
+const score = document.querySelector("#score");
 const muted = document.querySelector("#muted");
 const mutedIcon = document.querySelector("#mutedIcon");
 const mute = () => {
@@ -51,14 +55,14 @@ const flip = (e) => {
 };
 
 // La funcion selectCards sirve para ejecutar un event listener en cada carta
-const selectCards = () => {
+const selectCards = (resetScore) => {
+  attempts = resetScore;
+  score.textContent = attempts;
   const cards = document.querySelectorAll(".card");
   for (const card of cards) {
     card.addEventListener("click", flip);
   }
 };
-
-let attempts = 0;
 
 const selectFlippedCards = () => {
   const selectedList = document.querySelectorAll(".selected");
@@ -88,7 +92,6 @@ const selectFlippedCards = () => {
     }
   }
 
-  const score = document.querySelector("#score");
   score.textContent = `${attempts}`;
   if (attempts <= 12) {
     score.style.color = "green";
@@ -99,7 +102,12 @@ const selectFlippedCards = () => {
   }
 
   const allSolved = document.querySelectorAll(".solved");
-  if (allSolved.length === 16) {
+  if (allSolved.length === 2) {
+    clearInterval(chrono); // detener  el cronometro
+    const drawScore = { attempts, mins, secs };
+    sessionScores.push(drawScore);
+    console.log(sessionScores);
+
     const ulLluvia = document.createElement("ul");
     ulLluvia.classList.add("lluvia");
     document.body.append(ulLluvia);
@@ -115,7 +123,7 @@ const selectFlippedCards = () => {
         }px `;
         ulLluvia.append(li);
       }
-    }, 200);
+    }, 20000);
 
     const winP = document.querySelector("#winP");
     const winDiv = document.querySelector("#win");
@@ -145,11 +153,13 @@ const selectFlippedCards = () => {
       winDiv.classList.add("behind");
       clearInterval(lluvia);
       generateDeck();
-      selectCards();
+      selectCards(0);
+      resetTimer();
+      startCounting();
     });
 
     attempts = 0;
   }
 };
 
-export { selectCards };
+export { selectCards, attempts };
