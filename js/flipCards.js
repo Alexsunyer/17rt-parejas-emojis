@@ -65,8 +65,7 @@ const selectFlippedCards = () => {
   if (selectedList.length === 2) {
     attempts++;
     const cards = document.querySelectorAll(".selected.flipped .back");
-    const card1 = cards[0];
-    const card2 = cards[1];
+    const [card1, card2] = cards;
 
     // console.log(card1, card2);
     if (card1.textContent === card2.textContent) {
