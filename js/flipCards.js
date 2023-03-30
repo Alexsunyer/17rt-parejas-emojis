@@ -1,7 +1,26 @@
+"use strict";
 // La funcion flip se encarga de dar la vuelta
 
+
 import { generateDeck, ul } from "./generateDeck.js";
-const emojis = ["🤯", "💣", "❤️", "👩", "🎶", "🥔", "🏠", "👻"];
+
+
+//nuevo
+const flipSound = () => {
+  let audio = new Audio("/audio/card3.mp3");
+  audio.play();
+};
+
+const ErrorSound = () => {
+  let audio = new Audio("/audio/error1.mp3");
+  audio.play();
+};
+//nuevo
+
+const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+
+
+
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
@@ -17,10 +36,12 @@ const selectCards = () => {
   const cards = document.querySelectorAll(".card");
   for (const card of cards) {
     card.addEventListener("click", flip);
+    card.addEventListener("click", flipSound); //nuevo
   }
 };
 
 let attempts = 0;
+
 const selectFlippedCards = () => {
   const selectedList = document.querySelectorAll(".selected");
   if (selectedList.length === 2) {
@@ -29,12 +50,14 @@ const selectFlippedCards = () => {
     const card1 = cards[0];
     const card2 = cards[1];
 
-    console.log(card1, card2);
+    // console.log(card1, card2);
     if (card1.textContent === card2.textContent) {
       for (const card of selectedList) {
         card.classList.remove("selected");
         card.classList.add("solved");
         card.removeEventListener("click", flip);
+        card.removeEventListener("click", flipSound); //nuevo
+        card.addEventListener("click", ErrorSound); //nuevo
       }
     } else {
       for (const card of selectedList) {
@@ -47,11 +70,20 @@ const selectFlippedCards = () => {
       }, 1000);
     }
   }
-  const score = document.querySelector(".score");
+
+  const score = document.querySelector("#score");
   score.textContent = `${attempts}`;
+  if (attempts <= 12) {
+    score.style.color = "green";
+  } else if (attempts <= 20) {
+    score.style.color = "orange";
+  } else {
+    score.style.color = "red";
+  }
+
   const allSolved = document.querySelectorAll(".solved");
   console.log(allSolved.length);
-  if (allSolved.length === 2) {
+  if (allSolved.length === 16) {
     const ulLluvia = document.createElement("ul");
     ulLluvia.classList.add("lluvia");
     document.body.append(ulLluvia);
@@ -97,6 +129,7 @@ const selectFlippedCards = () => {
       winDiv.classList.add("behind");
       clearInterval(lluvia);
       generateDeck();
+      selectCards();
     });
 
     attempts = 0;
