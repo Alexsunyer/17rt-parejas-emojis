@@ -14,6 +14,8 @@ const ErrorSound = () => {
 };
 //nuevo
 
+const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
@@ -67,6 +69,23 @@ const selectFlippedCards = () => {
   const allSolved = document.querySelectorAll(".solved");
   console.log(allSolved.length);
   if (allSolved.length === 2) {
+    const ulLluvia = document.createElement("ul");
+    ulLluvia.classList.add("lluvia");
+    document.body.append(ulLluvia);
+    let lluvia = setInterval(() => {
+      for (let i = 0; i < 8; i++) {
+        const styleEmoji = emojis[i];
+
+        const li = document.createElement("li");
+
+        li.textContent = `${styleEmoji}`;
+        li.style.left = ` ${Math.floor(
+          Math.random() * document.body.offsetWidth
+        )}px `;
+        ulLluvia.append(li);
+      }
+    }, 200);
+
     const winP = document.querySelector("#winP");
     const winDiv = document.querySelector("#win");
     const winButton = document.querySelector("#restart");
@@ -87,10 +106,13 @@ const selectFlippedCards = () => {
     } else {
       winP.textContent = `Yo creo que mi sobrino es mejor... Te ha tomado ${attempts} intentos...`;
     }
+
     winButton.addEventListener("click", () => {
       ul.innerHTML = "";
+      ulLluvia.innerHTML = "";
       winDiv.classList.remove("infront");
       winDiv.classList.add("behind");
+      clearInterval(lluvia);
       generateDeck();
     });
 

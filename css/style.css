@@ -23,7 +23,7 @@ body > header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
 }
 main {
   grid-area: main;
@@ -88,6 +88,15 @@ h3 {
   font-family: Roboto, sans-serif;
 }
 
+/* Lluvia */
+
+.lluvia li {
+  position: fixed;
+  list-style: none;
+  font-size: 3rem;
+  animation: lluvia 5s forwards linear;
+}
+
 /* cartas*/
 .cards {
   list-style: none;
@@ -100,8 +109,8 @@ h3 {
   width: 370px;
   height: 550px;
   /* gap: 1rem; */
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .card {
@@ -183,34 +192,27 @@ h3 {
   background-color: #85e21b;
 }
 
-/* @media (min-width: 768px) {
-  .cards {
-    list-style: none;
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    justify-items: center;
-    width: 768px;
-    gap: 1rem;
-    padding-bottom: 2rem;
+@keyframes lluvia {
+  0% {
+    top: 0;
   }
-  .cards {
-    background-color: white;
-    list-style: none;
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    justify-items: center;
-    width: 100%;
-    gap: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  20% {
+    transform: translateX(-8rem);
   }
-} */
+  40% {
+    transform: translateX(8rem);
+  }
+  60% {
+    transform: translateX(-8rem);
+  }
+
+  80% {
+    transform: translateX(8rem);
+  }
+  100% {
+    top: 100vh;
+}
+} 
 
 @keyframes dealCartas {
   0% {
