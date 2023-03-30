@@ -39,6 +39,7 @@ const selectCards = () => {
 };
 
 let attempts = 0;
+
 const selectFlippedCards = () => {
   const selectedList = document.querySelectorAll(".selected");
   if (selectedList.length === 2) {
@@ -47,7 +48,7 @@ const selectFlippedCards = () => {
     const card1 = cards[0];
     const card2 = cards[1];
 
-    console.log(card1, card2);
+    // console.log(card1, card2);
     if (card1.textContent === card2.textContent) {
       for (const card of selectedList) {
         card.classList.remove("selected");
@@ -67,11 +68,20 @@ const selectFlippedCards = () => {
       }, 1000);
     }
   }
-  const score = document.querySelector(".score");
+
+  const score = document.querySelector("#score");
   score.textContent = `${attempts}`;
+  if (attempts <= 12) {
+    score.style.color = "green";
+  } else if (attempts <= 20) {
+    score.style.color = "orange";
+  } else {
+    score.style.color = "red";
+  }
+
   const allSolved = document.querySelectorAll(".solved");
   console.log(allSolved.length);
-  if (allSolved.length === 2) {
+  if (allSolved.length === 16) {
     const ulLluvia = document.createElement("ul");
     ulLluvia.classList.add("lluvia");
     document.body.append(ulLluvia);
@@ -117,6 +127,7 @@ const selectFlippedCards = () => {
       winDiv.classList.add("behind");
       clearInterval(lluvia);
       generateDeck();
+      selectCards();
     });
 
     attempts = 0;
