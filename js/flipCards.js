@@ -1,7 +1,8 @@
+"use strict";
 // La funcion flip se encarga de dar la vuelta
 
-import { generateDeck, ul } from "./generateDeck.js";
-const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
+import { generateDeck, ul, emojis } from "./generateDeck.js";
+
 const flip = (e) => {
   const currentCard = e.currentTarget;
   const stopBug = document.querySelectorAll(".flipped:not(.solved)");
