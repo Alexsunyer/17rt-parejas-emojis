@@ -1,19 +1,24 @@
 "use strict";
 import { generateDeck, ul } from "./generateDeck.js";
 import { selectCards } from "./flipCards.js";
-import { startCounting, resetTimer, chrono } from "./timer.js";
+import { startCounting, resetTimer } from "./timer.js";
 import { changeScoreColor, displayHighScore } from "./scores.js";
 const dealBtn = document.querySelector("#deal");
 const winDiv = document.querySelector("#win");
-dealBtn.addEventListener("click", (e) => {
-  ul.innerHTML = "";
-  winDiv.classList.add("behind");
-  winDiv.classList.remove("infront");
-  clearInterval(chrono);
+const resetAfterWin = () => {
+  // clearInterval(lluvia);
   generateDeck();
   selectCards(0);
   resetTimer();
   startCounting();
+};
+dealBtn.addEventListener("click", (e) => {
+  ul.innerHTML = "";
+  winDiv.classList.add("behind");
+  winDiv.classList.remove("infront");
+  resetAfterWin();
 });
 displayHighScore();
 changeScoreColor(); //pone la mejor marca si existe
+
+export { resetAfterWin };
