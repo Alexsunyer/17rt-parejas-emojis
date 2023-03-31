@@ -17,7 +17,7 @@ const startCounting = () =>
       minutes.textContent = mins.toString().padStart(2, "0");
       seconds.textContent = secs.toString().padStart(2, "0");
     }
-  }, 500));
+  }, 1000));
 const resetTimer = () => {
   clearInterval(chrono);
   mins = 0;
