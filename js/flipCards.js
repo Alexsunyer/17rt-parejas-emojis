@@ -1,9 +1,10 @@
 "use strict";
 // La funcion flip se encarga de dar la vuelta
 
-import { generateDeck, ul } from "./generateDeck.js";
-import { startCounting, chrono, resetTimer, mins, secs } from "./timer.js";
+import { ul } from "./generateDeck.js";
+import { chrono, mins, secs } from "./timer.js";
 import { computeScores, changeScoreColor } from "./scores.js";
+import { resetAfterWin } from "./main.js";
 let attempts = 0;
 const sessionScores = [];
 const score = document.querySelector("#score");
@@ -153,11 +154,7 @@ const selectFlippedCards = () => {
       ulLluvia.innerHTML = "";
       winDiv.classList.remove("infront");
       winDiv.classList.add("behind");
-      clearInterval(lluvia);
-      generateDeck();
-      selectCards(0);
-      resetTimer();
-      startCounting();
+      resetAfterWin();
     });
 
     attempts = 0;
