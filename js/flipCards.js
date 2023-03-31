@@ -4,6 +4,7 @@
 import { generateDeck, ul } from "./generateDeck.js";
 import { startCounting, chrono, resetTimer, mins, secs } from "./timer.js";
 import { computeScores, changeScoreColor } from "./scores.js";
+import { lluviaJs } from "./lluvia.js";
 let attempts = 0;
 const sessionScores = [];
 const score = document.querySelector("#score");
@@ -36,8 +37,6 @@ const ErrorSound = () => {
   }
 };
 //nuevo
-
-const emojis = ["🤯", "💣", "❤️", "👩", "🫑", "🥔", "🏠", "👻"];
 
 const flip = (e) => {
   const currentCard = e.currentTarget;
@@ -98,7 +97,7 @@ const selectFlippedCards = () => {
   changeScoreColor();
 
   const allSolved = document.querySelectorAll(".solved");
-  if (allSolved.length === 16) {
+  if (allSolved.length === 2) {
     clearInterval(chrono); // detener  el cronometro
     // funcionamiento de los best scores
     const drawScore = {
@@ -110,22 +109,9 @@ const selectFlippedCards = () => {
     sessionScores.push(drawScore);
     computeScores(sessionScores);
 
-    const ulLluvia = document.createElement("ul");
-    ulLluvia.classList.add("lluvia");
-    document.body.append(ulLluvia);
-    let lluvia = setInterval(() => {
-      for (let i = 0; i < 8; i++) {
-        const styleEmoji = emojis[i];
-
-        const li = document.createElement("li");
-
-        li.textContent = `${styleEmoji}`;
-        li.style.left = ` ${
-          Math.floor(Math.random() * (document.body.offsetWidth * 1.1)) - 20
-        }px `;
-        ulLluvia.append(li);
-      }
-    }, 20000);
+    const lluvia = document.querySelector("#tsparticles");
+    lluvia.classList.remove("hidden");
+    lluvia.classList.add("shown");
 
     const winP = document.querySelector("#winP");
     const winDiv = document.querySelector("#win");
@@ -150,10 +136,10 @@ const selectFlippedCards = () => {
 
     winButton.addEventListener("click", () => {
       ul.innerHTML = "";
-      ulLluvia.innerHTML = "";
+      lluvia.classList.remove("shown");
+      lluvia.classList.add("hidden");
       winDiv.classList.remove("infront");
       winDiv.classList.add("behind");
-      clearInterval(lluvia);
       generateDeck();
       selectCards(0);
       resetTimer();
