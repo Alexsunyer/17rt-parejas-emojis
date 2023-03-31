@@ -1,3 +1,4 @@
+"use strict";
 const minutes = document.querySelector("#scoreMins");
 const seconds = document.querySelector("#scoreSecs");
 let secs = 0;
@@ -9,7 +10,6 @@ const startCounting = () =>
     secs++;
     if (secs < 60) {
       secs++;
-
       seconds.textContent = secs.toString().padStart(2, "0");
     } else {
       mins++;
