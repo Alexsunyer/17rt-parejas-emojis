@@ -4,7 +4,7 @@ let highScore = JSON.parse(localStorage.getItem("bestScore")) || {};
 const classHighScore = document.querySelector(".highScore");
 const displayHighScore = () => {
   if (localStorage.getItem("bestScore")) {
-    const record = document.createElement("p");
+    const record = document.querySelector("#highScore");
     record.innerHTML = `<span class="score">${
       highScore.attempts
     }</span><span>&nbsp&nbsp</span><span id="bestMinutes">${highScore.mins
@@ -12,8 +12,8 @@ const displayHighScore = () => {
       .padStart(2, "0")}</span><span id="bestSeconds">:${highScore.secs
       .toString()
       .padStart(2, "0")}</span>`;
-    classHighScore.append(record);
   }
+  changeScoreColor();
 };
 const changeScoreColor = () => {
   const displayedScores = document.querySelectorAll(".score");
