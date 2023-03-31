@@ -3,9 +3,11 @@
 
 import { generateDeck, ul } from "./generateDeck.js";
 import { startCounting, chrono, resetTimer, mins, secs } from "./timer.js";
+import { computeScores, changeScoreColor } from "./scores.js";
 let attempts = 0;
 const sessionScores = [];
 const score = document.querySelector("#score");
+
 const muted = document.querySelector("#muted");
 const mutedIcon = document.querySelector("#mutedIcon");
 const mute = () => {
@@ -93,20 +95,20 @@ const selectFlippedCards = () => {
   }
 
   score.textContent = `${attempts}`;
-  if (attempts <= 12) {
-    score.style.color = "green";
-  } else if (attempts <= 20) {
-    score.style.color = "orange";
-  } else {
-    score.style.color = "red";
-  }
+  changeScoreColor();
 
   const allSolved = document.querySelectorAll(".solved");
-  if (allSolved.length === 2) {
+  if (allSolved.length === 16) {
     clearInterval(chrono); // detener  el cronometro
-    const drawScore = { attempts, mins, secs };
+    // funcionamiento de los best scores
+    const drawScore = {
+      attempts,
+      mins,
+      secs,
+      totalTime: mins * 60 + secs,
+    };
     sessionScores.push(drawScore);
-    console.log(sessionScores);
+    computeScores(sessionScores);
 
     const ulLluvia = document.createElement("ul");
     ulLluvia.classList.add("lluvia");
@@ -162,4 +164,4 @@ const selectFlippedCards = () => {
   }
 };
 
-export { selectCards, attempts };
+export { selectCards, attempts, sessionScores };
