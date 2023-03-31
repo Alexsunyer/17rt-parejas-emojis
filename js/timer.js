@@ -7,17 +7,17 @@ let mins = 0;
 let chrono;
 const startCounting = () =>
   (chrono = setInterval(() => {
-    secs++;
-    if (secs < 60) {
+    if (secs < 59) {
       secs++;
       seconds.textContent = secs.toString().padStart(2, "0");
     } else {
-      mins++;
       secs = 0;
+      mins++;
+
       minutes.textContent = mins.toString().padStart(2, "0");
       seconds.textContent = secs.toString().padStart(2, "0");
     }
-  }, 1000));
+  }, 500));
 const resetTimer = () => {
   clearInterval(chrono);
   mins = 0;

@@ -1,7 +1,7 @@
 "use strict";
 
 let highScore = JSON.parse(localStorage.getItem("bestScore")) || {};
-const classHighScore = document.querySelector(".highScore");
+
 const displayHighScore = () => {
   if (localStorage.getItem("bestScore")) {
     const record = document.querySelector("#highScore");
