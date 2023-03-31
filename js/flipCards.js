@@ -4,7 +4,7 @@
 import { ul } from "./generateDeck.js";
 import { chrono, mins, secs } from "./timer.js";
 import { computeScores, changeScoreColor } from "./scores.js";
-import { lluviaJs } from "./lluvia.js";
+import { rain } from "./lluvia.js";
 import { resetAfterWin } from "./main.js";
 
 let attempts = 0;
@@ -99,7 +99,7 @@ const selectFlippedCards = () => {
   changeScoreColor();
 
   const allSolved = document.querySelectorAll(".solved");
-  if (allSolved.length === 2) {
+  if (allSolved.length === 16) {
     clearInterval(chrono); // detener  el cronometro
     // funcionamiento de los best scores
     const drawScore = {
@@ -110,10 +110,7 @@ const selectFlippedCards = () => {
     };
     sessionScores.push(drawScore);
     computeScores(sessionScores);
-
-    const lluvia = document.querySelector("#tsparticles");
-    lluvia.classList.remove("hidden");
-    lluvia.classList.add("shown");
+    rain(true);
 
     const winP = document.querySelector("#winP");
     const winDiv = document.querySelector("#win");
@@ -138,12 +135,9 @@ const selectFlippedCards = () => {
 
     winButton.addEventListener("click", () => {
       ul.innerHTML = "";
-      lluvia.classList.remove("shown");
-      lluvia.classList.add("hidden");
       winDiv.classList.remove("infront");
       winDiv.classList.add("behind");
       resetAfterWin();
-
     });
 
     attempts = 0;
