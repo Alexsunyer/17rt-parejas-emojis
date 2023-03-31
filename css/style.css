@@ -63,8 +63,16 @@ h3 {
   position: fixed;
 }
 
-.infront {
+.hidden {
+  visibility: hidden;
+}
+.shown {
+  visibility: visible;
   z-index: 1;
+}
+
+.infront {
+  z-index: 2;
   position: fixed;
   visibility: visible;
   font-size: 2rem;
@@ -93,11 +101,12 @@ h3 {
 
 /* Lluvia */
 
-.lluvia li {
-  position: fixed;
-  list-style: none;
-  font-size: 3rem;
-  animation: lluvia 5s forwards linear;
+#animate {
+  margin: 0 auto;
+  width: 4rem;
+  overflow: visible;
+  position: relative;
+  font-size: 4rem;
 }
 
 /* cartas*/
